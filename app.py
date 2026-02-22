@@ -2,10 +2,10 @@ import streamlit as st
 import pickle
 import numpy as np
 
-# Page Config (Change browser tab name)
-st.set_page_config(page_title="🚢Titanic Survival Predictor")
+# Page Config
+st.set_page_config(page_title="Titanic Survival Predictor")
 
-# Background Gradient
+#  Background + Button Styling
 st.markdown("""
     <style>
     .stApp {
@@ -14,6 +14,36 @@ st.markdown("""
 
     h1, h2, h3, h4, h5, h6, label, p {
         color: white;
+    }
+
+    /* Button Style */
+    div.stButton > button {
+        background-color: #1f2937;
+        color: white;
+        border-radius: 10px;
+        height: 45px;
+        width: 220px;
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        transition: none;
+    }
+
+    div.stButton > button:hover {
+        background-color: #1f2937;
+        color: white;
+    }
+
+    div.stButton > button:active {
+        background-color: #1f2937 !important;
+        color: white !important;
+        box-shadow: none !important;
+        transform: none !important;
+    }
+
+    div.stButton > button:focus {
+        outline: none !important;
+        box-shadow: none !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -47,11 +77,11 @@ features = np.array([[pclass, sex_val, age, sibsp, parch, fare, embarked_val]])
 # Scale features
 features_scaled = scaler.transform(features)
 
-# Prediction button
+# Prediction
 if st.button("Predict Survival"):
     prediction = model.predict(features_scaled)
 
     if prediction[0] == 1:
-        st.success(" Passenger Survived")
+        st.success("Passenger Survived")
     else:
         st.error(" Passenger Did Not Survive")
