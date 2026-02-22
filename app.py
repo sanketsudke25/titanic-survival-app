@@ -3,7 +3,7 @@ import pickle
 import numpy as np
 
 # Page Config
-st.set_page_config(page_title="Titanic Survival Predictor")
+st.set_page_config(page_title="🚢 Titanic Survival Predictor")
 
 #  Background + Button Styling
 st.markdown("""
