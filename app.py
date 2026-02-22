@@ -2,6 +2,22 @@ import streamlit as st
 import pickle
 import numpy as np
 
+# Page Config (Change browser tab name)
+st.set_page_config(page_title="🚢Titanic Survival Predictor")
+
+# Background Gradient
+st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(135deg, #74b9ff, #6c5ce7);
+    }
+
+    h1, h2, h3, h4, h5, h6, label, p {
+        color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # Load model and scaler
 with open("titanic_model.pkl", "rb") as f:
     model = pickle.load(f)
@@ -36,6 +52,6 @@ if st.button("Predict Survival"):
     prediction = model.predict(features_scaled)
 
     if prediction[0] == 1:
-        st.success("✅ Passenger Survived")
+        st.success(" Passenger Survived")
     else:
-        st.error("❌ Passenger Did Not Survive")
+        st.error(" Passenger Did Not Survive")
